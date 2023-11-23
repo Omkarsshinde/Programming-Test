@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+int monotonic(string str) {
+  if (str.length() == 1) return 1;
+
+  bool increasing = true;
+  bool decreasing = true;
+
+  for (int i = 1; i < str.length(); i++) {
+    if (str[i] < str[i - 1]) increasing = false;
+    if (str[i] > str[i - 1]) decreasing = false;
+  }
+
+  if (increasing) return 1;
+  if (decreasing) return 2;
+  return 0;
+}
+
+int main() {
+  string str;
+  cin >> str;
+
+  int result = monotonic(str);
+
+  if (result == 1) {
+    cout << "The string is monotonically increasing." << endl;
+  } else if (result == 2) {
+    cout << "The string is monotonically decreasing." << endl;
+  } else {
+    cout << "The string is not monotonic." << endl;
+  }
+
+  return 0;
+}
